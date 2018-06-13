@@ -29,7 +29,6 @@ public class UsingProcessing extends PApplet {
 	}
 	
 	public void draw() {
-		background(0);
 		b.changeColor(100);
 		b.drawButton();
 		//for (int i = 0; i < button.length; i++) button[i].drawButton();

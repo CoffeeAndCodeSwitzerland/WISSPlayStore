@@ -10,8 +10,8 @@ public class Button extends GUI{
 	
 	public void drawButton() {
 		p.fill(myColor[0], myColor[1], myColor[2]);
-		p.fill(255);
-		System.out.println("Should wörk"+ Integer.toString(myColor[1]) + " " + Integer.toString(myHeight));
+		//p.fill(255);
+		//System.out.println("Should wörk"+ Integer.toString(myColor[1]) + " " + Integer.toString(myHeight));
 		p.rect(xPos, yPos, myWidth, myHeight);
 	}
 	
