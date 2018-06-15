@@ -5,10 +5,9 @@ import processing.core.PApplet;
 public class UsingProcessing extends PApplet {
 	
 	String[] gameName = {"Tetris","Moorhuhn","OCD"};
-	//Button[] button = new Button[3];
+	Button[] button;
 	int fontsize;
 	int size = 0;
-	Button b = new Button(this, 100,100,100,100);
 	
 	public static void main(String[] args) {
 		PApplet.main("Menu.UsingProcessing");
@@ -19,25 +18,25 @@ public class UsingProcessing extends PApplet {
 	}
 	
 	public void setup() {
+		button = new Button[gameName.length];
 		surface.setResizable(true);
 		resize();
-		/*
 		for (int i = 0; i < button.length; i++) {
-			button[i] = new Button(this, 0,0,100,100);
-			button[i].changeColor(100,200,100);
-		}*/
+			button[i] = new Button(this, 110*i,10,100,100);
+			button[i].changeColor(0,200,0);
+		}
 	}
 	
 	public void draw() {
-		b.changeColor(100);
-		b.drawButton();
-		//for (int i = 0; i < button.length; i++) button[i].drawButton();
+		resize();
+		for (int i = 0; i < button.length; i++) button[i].drawButton();
 	}
 	
 	public void resize() {
-		fontsize = height/5;
-		if (height/3 > width/5) size = width/5;
-		else size = height/3;
+		for (int i = 0; i < button.length; i++) {
+			//button[i].resize(width/3, height/5);
+			//button[i].resize(100,100);
+		}
 	}
 	
 }
