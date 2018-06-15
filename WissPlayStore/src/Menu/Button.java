@@ -30,4 +30,9 @@ public class Button extends GUI{
 		p.text(text,xPos+ myWidth/2, yPos + myHeight/2);
 	}
 	
+	public boolean checkOnButton(int x, int y) {
+		if (x < xPos+ myWidth && x > xPos && y < yPos+ myHeight && y > yPos) return true;
+		else return false;
+	}
+	
 }
