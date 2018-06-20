@@ -1,6 +1,9 @@
 package menu;
 
 
+import games.moorhuhn.controllers.Moorhuhn;
+import games.schiffliversaenken.schiffeversenken.Schiffliversenken;
+import games.tetris.controls.TetrisStart;
 import processing.core.PApplet;
 
 /**
@@ -11,10 +14,11 @@ import processing.core.PApplet;
 
 public class UsingProcessing extends PApplet {
 	
-	String[] gameName = {"Tetris","Moorhuhn","OCD"};
+	String[] gameName = {"Tetris","Moorhuhn","Schiffliversänkä"};
 	Button[] button;
 	int fontsize;
 	int size = 0;
+	
 
 	public static void main(String[] args) {
 		PApplet.main("menu.UsingProcessing");
@@ -49,7 +53,20 @@ public class UsingProcessing extends PApplet {
 	}
 	
 	public void mouseClicked() {
-		//Todo game link
+		thread("startGame");
 	}
 	
+	public void startGame() {
+		if (button[0].checkOnButton(mouseX, mouseY)) {
+			TetrisStart.myMain();
+		}
+		
+		if (button[1].checkOnButton(mouseX, mouseY)) {
+			Moorhuhn.myMain();
+		}
+		
+		if (button[2].checkOnButton(mouseX, mouseY)) {
+			Schiffliversenken.myMain();
+		}
+	}
 }
