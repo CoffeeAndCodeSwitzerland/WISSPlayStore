@@ -1,5 +1,6 @@
 package Menu;
 
+
 import processing.core.PApplet;
 
 /**
@@ -45,6 +46,10 @@ public class UsingProcessing extends PApplet {
 	
 	public void resize() {
 		//Todo buttons should adapt to the changes in size
+	}
+	
+	public void mouseClicked() {
+		//Todo game link
 	}
 	
 }
