@@ -35,7 +35,7 @@ public class Explosion {
 		sndCounter++;
 	    parent.image(gifExplosion, xPos, yPos, myWidth, myHeight); 
 	    if(sndCounter == 1) {
-	    	Sound.playSound(new File(Environment.getActualPath()+"\\bin\\sounds\\sndExplosion.wav"));  	
+	    	Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndExplosion.wav"));  	
 	    }
 	    	    else if(sndCounter > 10)
 	    {

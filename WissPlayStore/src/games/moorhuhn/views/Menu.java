@@ -145,7 +145,7 @@ public class Menu {
 	      i = 0;
 		  holeCounter = 0;
 		  targets.clear();
-		  Sound.playSound(new File(Environment.getActualPath()+"\\bin\\sounds\\sndTheme.wav"));
+		  Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndTheme.wav"));
 	    }
 	   	
 	  

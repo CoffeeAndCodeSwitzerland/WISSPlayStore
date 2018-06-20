@@ -40,9 +40,13 @@ public class Moorhuhn extends PApplet{
 		}
 		return mySound;
 	}
-
+	
 	public static void main(String[] args) {
-		PApplet.main("controllers.Moorhuhn");
+		PApplet.main("games.moorhuhn.controllers.Moorhuhn");
+	}
+	
+	public static void myMain() {
+		PApplet.main("games.moorhuhn.controllers.Moorhuhn");
 	}
 	
 	 //Window size 1400x800 is the same as the background image 
@@ -54,7 +58,7 @@ public class Moorhuhn extends PApplet{
 	public void setup() {
 		   frameRate(60);
 		   me = this;
-		   Sound.playSound(new File(Environment.getActualPath()+"\\bin\\sounds\\sndTheme.wav"));
+		   Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndTheme.wav"));
 	}
 
 		public void draw() {

@@ -184,7 +184,7 @@ public class Huhn extends Shape{
 	               showShapePoints(0, 255, 0, (35-(scale/5)));   
 	               Moorhuhn.getMyGameController().myPlayer.showHitmarker();
 	               //HuhnDead-Sound
-	               //Sound.playSound(new File("Sounds/sndHuhnDead.wav"));
+	               //Sound.playSound(new File("\bin\games\moorhuhn\sounds\sndHuhnDead.wav"));
 	              }
 	        }
 	    

@@ -55,7 +55,7 @@ public class Hitmarker {
 	      xPos = parent.mouseX-35;
 	      yPos = parent.mouseY-35;
 	      //Spielt Ton ab
-	      Sound.playSound(new File(Environment.getActualPath()+"\\bin\\sounds\\sndHitmarker.wav"));
+	      Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndHitmarker.wav"));
 	    }
 	  }
 	  

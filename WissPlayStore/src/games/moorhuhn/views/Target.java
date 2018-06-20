@@ -42,7 +42,7 @@ public class Target {
 	 {
 		 if(state <= 1)
 		 {
-			 Sound.playSound(new File(Environment.getActualPath()+"\\bin\\sounds\\sndShotgun.wav"));
+			 Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndShotgun.wav"));
 		 }
 	 }
 }

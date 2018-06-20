@@ -39,7 +39,7 @@ public class Player {
 	        shotGun.gunSettings();
 	        Moorhuhn.getMyGameController().Shots.remove(Moorhuhn.getMyGameController().Shots.size() - 1); //Zieht dem Spieler ein Schuss ab
 	        //Sound Shotgun
-	        Sound.playSound(new File("src/sounds/sndShotgun.wav"));
+	        Sound.playSound(new File("\\bin\\games\\moorhuhn\\sounds\\sndShotgun.wav"));
 	        shotHuhn();	//Prüft ob ein Huhn oder ein Flieger getroffen wurde
 	        Moorhuhn.getMyGameController().myPlane.shotPlane(); //Prüft ob der Flieger getroffen wird
 	        Moorhuhn.getMyGameController().myPlane.myBanner.isBannerShot(); //Prüft ob der Banner getroffen wird
@@ -59,12 +59,12 @@ public class Player {
 	          {
 	            reload();
 	            noAmo = false;
-	            Sound.playSound(new File(Environment.getActualPath()+"\\bin\\sounds\\sndReload.wav"));
+	            Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndReload.wav"));
 	          }
 	          else
 	          {
 	        	  doReload();
-	        	  Sound.playSound(new File(Environment.getActualPath()+"\\bin\\sounds\\sndEmptyGun.wav"));
+	        	  Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndEmptyGun.wav"));
 	          }
 	      }
 	    }

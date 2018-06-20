@@ -15,7 +15,7 @@ public class Image {
 	
 	PApplet parent;
 	
-	String bilderPath ="";
+	String bilderPath ="games/moorhuhn/data/";
 	
 	public Image(PApplet p) {
 	  parent = p;
