@@ -14,7 +14,7 @@ import processing.core.PApplet;
 
 public class WissPlayStore extends PApplet {
 	
-	String[] gameName = {"Tetris","Moorhuhn","Schiffliversänkä"};
+	String[] gameName = {"Tetris","Moorhuhn","Schiffliversänkä","TextAdventure N/A"};
 	Button[] button;
 	int fontsize;
 	int size = 0;
@@ -49,24 +49,33 @@ public class WissPlayStore extends PApplet {
 		}
 	}
 
-	
+	//W
 	public void mouseClicked() {
-		try {
-			thread("startGame");
-		} catch(Exception e) {}
+		startGame();
 	}
 	
 	public void startGame() {
 		if (button[0].checkOnButton(mouseX, mouseY)) {
-			TetrisStart.myMain();
+			thread("startTetris");
 		}
 		
 		if (button[1].checkOnButton(mouseX, mouseY)) {
-			Moorhuhn.myMain();
+			thread("startMoorhuhn");
 		}
 		
 		if (button[2].checkOnButton(mouseX, mouseY)) {
-			Schiffliversenken.myMain();
+			thread("startSchiffliversenken");
 		}
+	}
+	
+	
+	public void startTetris() {
+		TetrisStart.myMain();
+	}
+	public void startMoorhuhn() {
+		Moorhuhn.myMain();
+	}
+	public void startSchiffliversenken() {
+		Schiffliversenken.myMain();
 	}
 }
