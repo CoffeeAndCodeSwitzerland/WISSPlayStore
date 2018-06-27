@@ -2,7 +2,7 @@ package games.tetris.controls;
 
 import processing.core.PApplet;
 
-public class TetrisStart {
+public class TetrisStart implements Runnable{
 	/*
 	public static void main(String[] args) {
 		PApplet.main("games.tetris.controls.Tetris");
@@ -10,5 +10,10 @@ public class TetrisStart {
 
 	public static void myMain() {
 		PApplet.main("games.tetris.controls.Tetris");
+	}
+
+	@Override
+	public void run() {
+		myMain();
 	}
 }

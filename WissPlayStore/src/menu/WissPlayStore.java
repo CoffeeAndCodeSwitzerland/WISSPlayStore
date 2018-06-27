@@ -57,6 +57,7 @@ public class WissPlayStore extends PApplet {
 	public void startGame() {
 		if (button[0].checkOnButton(mouseX, mouseY)) {
 			thread("startTetris");
+			//new Thread(new TetrisStart()).start();
 		}
 		
 		if (button[1].checkOnButton(mouseX, mouseY)) {
