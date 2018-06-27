@@ -24,8 +24,9 @@ public class Button extends GUI{
 	//Draws a Rectangle with text in it
 	public void drawButton() {
 		p.fill(myColor[0], myColor[1], myColor[2]);
-		p.rect(xPos, yPos, myWidth, myHeight);
+		p.rect(xPos, yPos, myWidth, myHeight, myWidth/4);
 		p.fill(textColor);
+		p.textSize(textSize);
 		p.textAlign(p.CENTER);
 		p.text(text,xPos+ myWidth/2, yPos + myHeight/2);
 	}

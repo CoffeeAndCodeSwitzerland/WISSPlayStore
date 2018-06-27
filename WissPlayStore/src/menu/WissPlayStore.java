@@ -12,7 +12,7 @@ import processing.core.PApplet;
  *
  */
 
-public class UsingProcessing extends PApplet {
+public class WissPlayStore extends PApplet {
 	
 	String[] gameName = {"Tetris","Moorhuhn","Schiffliversänkä"};
 	Button[] button;
@@ -21,39 +21,39 @@ public class UsingProcessing extends PApplet {
 	
 
 	public static void main(String[] args) {
-		PApplet.main("menu.UsingProcessing");
+		PApplet.main("menu.WissPlayStore");
 	}
 	
 	public void settings() {
-		size(500,500);
+		size(800,800);
 	}
 	
 	public void setup() {
+		width = 800;
+		size = (width-(10*gameName.length)+10)/gameName.length;
 		button = new Button[gameName.length];
-		surface.setResizable(true);
-		resize();
 		for (int i = 0; i < button.length; i++) {
-			button[i] = new Button(this, 110*i,10,100,100);
-			button[i].changeColor(0,200,0);
+			button[i] = new Button(this, (size+10)*i,10,size,size);
+			button[i].changeColor(150);
 			button[i].text = gameName[i];
+			button[i].textSize = size/10;
 		}
 	}
 	
 	public void draw() {
-		resize();
+		background(75);
 		for (int i = 0; i < button.length; i++) {
-			if (button[i].checkOnButton(mouseX, mouseY)) button[i].changeColor(0,255,0);
-			else button[i].changeColor(55,55,255);
+			if (button[i].checkOnButton(mouseX, mouseY)) button[i].changeColor(255);
+			else button[i].changeColor(150);
 			button[i].drawButton();
 		}
 	}
-	
-	public void resize() {
-		//Todo buttons should adapt to the changes in size
-	}
+
 	
 	public void mouseClicked() {
-		thread("startGame");
+		try {
+			thread("startGame");
+		} catch(Exception e) {}
 	}
 	
 	public void startGame() {
