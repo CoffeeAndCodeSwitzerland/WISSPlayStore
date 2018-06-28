@@ -19,6 +19,8 @@ public class WissPlayStore extends PApplet {
 	int fontsize;
 	int size = 0;
 	
+	Thread tetris;
+	
 
 	public static void main(String[] args) {
 		PApplet.main("menu.WissPlayStore");
@@ -56,8 +58,9 @@ public class WissPlayStore extends PApplet {
 	
 	public void startGame() {
 		if (button[0].checkOnButton(mouseX, mouseY)) {
-			thread("startTetris");
-			//new Thread(new TetrisStart()).start();
+			//thread("startTetris");
+			tetris = new Thread(new TetrisStart());
+			tetris.start();
 		}
 		
 		if (button[1].checkOnButton(mouseX, mouseY)) {
@@ -71,7 +74,9 @@ public class WissPlayStore extends PApplet {
 	
 	
 	public void startTetris() {
+		System.out.println("Test1");
 		TetrisStart.myMain();
+		System.out.println("Test2");
 	}
 	public void startMoorhuhn() {
 		Moorhuhn.myMain();
