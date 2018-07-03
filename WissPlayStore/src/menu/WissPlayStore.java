@@ -19,9 +19,10 @@ import processing.core.PApplet;
 
 public class WissPlayStore extends PApplet {
 	
-	String[] gameName = {"Tetris","Moorhuhn","Schiffliversänkä","TextAdventure N/A"};
-	Button[] button;
+	String[] games = {"Tetris","Moorhuhn","Schiffliversänkä","TextAdventure N/A"};
+	Button[][] button;
 	String applicationName;
+	int arraySize;
 	
 	public static void main(String[] args) {
 		if (args.length == 0) {
@@ -56,23 +57,32 @@ public class WissPlayStore extends PApplet {
 			e.printStackTrace();
 		}
 		width = 800;
-		int size = (width-(10*gameName.length)+10)/gameName.length;
-		button = new Button[gameName.length];
-		for (int i = 0; i < button.length; i++) {
-			button[i] = new Button(this, (size+10)*i,10,size,size);
-			button[i].changeColor(150);
-			button[i].text = gameName[i];
-			button[i].textSize = size/10;
+		arraySize = (int) Math.ceil(Math.sqrt(games.length));
+		int size = (width-(10*arraySize)+10)/arraySize;
+		button = new Button[arraySize][arraySize];
+		for (int i = 0; i < arraySize; i++) {
+			for (int j = 0; j < arraySize; j++) {
+				if (i*arraySize + j < games.length) {
+					button[i][j] = new Button(this, (size+10)*j,(size+10)*i,size,size);
+					button[i][j].changeColor(150);
+					button[i][j].text = games[i*arraySize + j];
+					button[i][j].textSize = size/10;
+				}
+			}
 		}
 	}
 	
 	//Draws the GUI
 	public void draw() {
 		background(75);
-		for (int i = 0; i < button.length; i++) {
-			if (button[i].checkOnButton(mouseX, mouseY)) button[i].changeColor(255);
-			else button[i].changeColor(150);
-			button[i].drawButton();
+		for (int i = 0; i < arraySize; i++) {
+			for (int j = 0; j < arraySize; j++) {
+				if (i*arraySize + j < games.length) {
+					if (button[i][j].checkOnButton(mouseX, mouseY)) button[i][j].changeColor(255);
+					else button[i][j].changeColor(150);
+					button[i][j].drawButton();
+				}
+			}
 		}
 	}
 
@@ -89,12 +99,18 @@ public class WissPlayStore extends PApplet {
 	//This application will be startet with the game name as args
 	public void startGame() throws IOException {
 		String gameName = null;
-		for (int i = 0; i < button.length; i++) {
-			if (button[i].checkOnButton(mouseX,mouseY)) {
-				gameName = button[i].text;
-				i = button.length;
+		
+		for (int i = 0; i < arraySize; i++) {
+			for (int j = 0; j < arraySize; j++) {
+				if (i*arraySize + j < games.length) {
+					if (button[i][j].checkOnButton(mouseX,mouseY)) {
+						gameName = button[i][j].text;
+						i = button.length;
+					}
+				}
 			}
 		}
+		
 		if (gameName != null) {
 			Runtime rt = Runtime.getRuntime();
 			rt.exec("cmd.exe /c start java -jar "+applicationName+" "+gameName);
