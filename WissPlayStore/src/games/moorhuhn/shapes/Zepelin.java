@@ -1,6 +1,7 @@
 package games.moorhuhn.shapes;
 
 import games.moorhuhn.controllers.Moorhuhn;
+import games.moorhuhn.controllers.MusicHandler;
 import games.moorhuhn.views.Explosion;
 import processing.core.PApplet;
 
@@ -21,15 +22,18 @@ public class Zepelin extends Shape{
 	  int hitCounter = 0;
 	  int fireCounter = 0;
 	  
-	
-	public Zepelin(PApplet p){
+	  Moorhuhn moorhuhn;
+	  
+	MusicHandler music;
+	public Zepelin(PApplet p, MusicHandler musicHandler, Moorhuhn moorHuhn){
 		super (p);
+		moorhuhn = moorHuhn;
+		music = musicHandler;
 		myWidth = 450;
 		myHeight = 100;
 	    posZepelin();
-	    zepelinExplosion = new Explosion(parent);
+	    zepelinExplosion = new Explosion(parent, music);
 	    defaultControl();
-
 	}
 	
 	//Macht dass der Zepelin 3 mal getroffen werden muss.
@@ -57,7 +61,7 @@ public class Zepelin extends Shape{
 		
 	  public void checkState()
 	  {
-		 if (readyToFly == true && Moorhuhn.getMyGameController().myScore.score >= 88) //Prüft ob der Zepelin bereit ist und ob der Score mehr als 88 beträgt
+		 if (readyToFly == true && moorhuhn.getMyGameController().myScore.score >= 88) //Prüft ob der Zepelin bereit ist und ob der Score mehr als 88 beträgt
 		 {
 		  if(isShapeDead == 0) //Prüft ob Zepelin getroffen wurde 
 		  {
@@ -119,7 +123,7 @@ public class Zepelin extends Shape{
 			  //Legt die Position von der Explosion und der Punktzahl fest
 			  zepelinExplosion.xPos = xPos-zepelinExplosion.myWidth/2;
 			  zepelinExplosion.yPos = yPos-zepelinExplosion.myHeight/2;
-		      Moorhuhn.getMyGameController().myScore.score += xPos/5; //Fügt die Punkte zum Score hinzu
+		      moorhuhn.getMyGameController().myScore.score += xPos/5; //Fügt die Punkte zum Score hinzu
 		  }
 	  }
 	  
@@ -163,7 +167,7 @@ public class Zepelin extends Shape{
 	        	  //Zepelin getroffen
 	        	  hitCounter += 1;
 	        	  checkHit();
-	        	  Moorhuhn.getMyGameController().myPlayer.showHitmarker();
+	        	  moorhuhn.getMyGameController().myPlayer.showHitmarker();
 	        	  //Punkte werden in der Class Zepelin zum Score gezähl
 	          }
 		  }

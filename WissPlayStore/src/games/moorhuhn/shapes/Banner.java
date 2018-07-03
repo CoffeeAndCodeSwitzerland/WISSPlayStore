@@ -11,8 +11,11 @@ import processing.core.PApplet;
  */
 public class Banner extends Shape{
 	
-	  public Banner(PApplet p){
+	Moorhuhn moorhuhn;
+	
+	  public Banner(PApplet p, Moorhuhn moorHuhn){
 		  	super (p);
+		  	moorhuhn = moorHuhn;
 			imgShape = Moorhuhn.getMyImage().imgBanner;
 			imgDeadShape = Moorhuhn.getMyImage().imgDeadBanner;
 	  }
@@ -20,15 +23,15 @@ public class Banner extends Shape{
 	   public void isBannerShot()
 	   {
 	          //Prüft ob Banner getrofen wird
-	          if (parent.mouseX >= xPos-Moorhuhn.getMyGameController().myPlayer.shotGun.spray && 
-	        	parent.mouseX <= xPos+myWidth+Moorhuhn.getMyGameController().myPlayer.shotGun.spray && 
-	        	parent.mouseY >= yPos-Moorhuhn.getMyGameController().myPlayer.shotGun.spray && 
-	        	parent.mouseY <= yPos+myHeight+Moorhuhn.getMyGameController().myPlayer.shotGun.spray)
+	          if (parent.mouseX >= xPos-moorhuhn.getMyGameController().myPlayer.shotGun.spray && 
+	        	parent.mouseX <= xPos+myWidth+moorhuhn.getMyGameController().myPlayer.shotGun.spray && 
+	        	parent.mouseY >= yPos-moorhuhn.getMyGameController().myPlayer.shotGun.spray && 
+	        	parent.mouseY <= yPos+myHeight+moorhuhn.getMyGameController().myPlayer.shotGun.spray)
 	          {
 	        	  //Banner getroffen
 	        	  isShapeDead = 1;
-	        	  Moorhuhn.getMyGameController().myScore.score -= 50;
-	        	  Moorhuhn.getMyGameController().myPlayer.showHitmarker();
+	        	  moorhuhn.getMyGameController().myScore.score -= 50;
+	        	  moorhuhn.getMyGameController().myPlayer.showHitmarker();
 	          }
 	   }
 	  

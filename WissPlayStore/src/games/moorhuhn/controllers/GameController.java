@@ -42,19 +42,24 @@ public class GameController {
 	  
 	  public static PImage background;
 	    
-	  GameController(PApplet p) {  //Constructor
-		  parent = p;	  
+	  MusicHandler music;
+	  Moorhuhn moorhuhn;
+	  
+	  GameController(PApplet p, MusicHandler musicHandler, Moorhuhn moorHuhn) {  //Constructor
+		  parent = p;	 
+		  moorhuhn = moorHuhn;
+		  music = musicHandler;
 		  parent.background(0);
 		  parent.setSize(parent.width,parent.height);
 		  background = Moorhuhn.getMyImage().flowerPower;
 		  myScore = new Score(parent);
-		  myMenu = new Menu(parent);
+		  myMenu = new Menu(parent, moorhuhn);
 		  myHitmarker = new Hitmarker(parent);
-		  myPlane = new Plane(parent);
-		  myZepelin = new Zepelin(parent);
-		  myPlayer = new Player(parent);
-		  myBanner = new Banner(parent);
-		  myClock = new Clock(parent);
+		  myPlane = new Plane(parent, music, moorhuhn);
+		  myZepelin = new Zepelin(parent, music, moorhuhn);
+		  myPlayer = new Player(parent, moorhuhn);
+		  myBanner = new Banner(parent, moorhuhn);
+		  myClock = new Clock(parent, moorhuhn);
 		  createObjects();
 	  }
 	  
@@ -62,9 +67,9 @@ public class GameController {
 	  public void createObjects() 
 	  {
 		    //Huhner / füllt die ArrayList mit Hühner
-		    for(int i = 1; i <= 2; i++)
+		    for(int i = 1; i <= 10; i++)
 		    {
-		      chickens.add(new Huhn(parent));
+		      chickens.add(new Huhn(parent, moorhuhn));
 		    }
 		  
 		    //Shots / füllt die ArrayList mit Shots

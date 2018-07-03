@@ -1,6 +1,7 @@
 package games.moorhuhn.shapes;
 
 import games.moorhuhn.controllers.Moorhuhn;
+import games.moorhuhn.controllers.MusicHandler;
 import games.moorhuhn.views.Explosion;
 import processing.core.PApplet;
 
@@ -21,16 +22,21 @@ public class Plane extends Shape{
 	  int explosionCounter = 0; //Zählt aufwerts, wenn = 6 verschwindet die Explosion
 	  int bannerCounter = 0; //Zählt aufwerts
 	  
-	  public Plane(PApplet p) //Constructor
+	  MusicHandler music;
+	  Moorhuhn moorhuhn;
+	  
+	  public Plane(PApplet p, MusicHandler musicHandler, Moorhuhn moorHuhn) //Constructor
 	  {
 		  	super (p);
+		  	moorhuhn = moorHuhn;
+		  	music = musicHandler;
 			myWidth = 189;
 			myHeight = 80;
 			xPos = -myWidth;
 			xSpeed = 10;
 			imgShape = Moorhuhn.getMyImage().imgPlane;
-			planeExplosion = new Explosion(parent);
-			myBanner = new Banner(parent);
+			planeExplosion = new Explosion(parent, music);
+			myBanner = new Banner(parent, moorhuhn);
 			setDefault();
 	  }
 	  
@@ -158,8 +164,8 @@ public class Plane extends Shape{
 	          {
 	        	  //Flieger getroffen
 	        	  isShapeDead = 1;
-	        	  Moorhuhn.getMyGameController().myScore.score += (1400-xPos)/5;
-	        	  Moorhuhn.getMyGameController().myPlayer.showHitmarker();
+	        	  moorhuhn.getMyGameController().myScore.score += (1400-xPos)/5;
+	        	  moorhuhn.getMyGameController().myPlayer.showHitmarker();
 	          }
 	    }
 }

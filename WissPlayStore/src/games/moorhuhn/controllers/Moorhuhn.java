@@ -1,11 +1,11 @@
 package games.moorhuhn.controllers;
 
-import java.io.File;
-
-import games.moorhuhn.basics.Environment;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
 import games.moorhuhn.basics.Image;
 import games.moorhuhn.basics.Sound;
 import processing.core.PApplet;
+import games.moorhuhn.controllers.MusicHandler;
 
 /**
  * This is the mainclass. This class starts the game.
@@ -19,10 +19,11 @@ public class Moorhuhn extends PApplet{
 	private static Image myImage;
 	private static GameController myGameController;
 	private static Sound mySound;
+	public MusicHandler music;
 	
-	public static GameController getMyGameController() {
+	public GameController getMyGameController() {
 		if (myGameController == null) {
-		   myGameController = new GameController(me);
+		   myGameController = new GameController(me, music, this);
 		}
 		return myGameController;
 	}
@@ -51,6 +52,7 @@ public class Moorhuhn extends PApplet{
 	
 	 //Window size 1400x800 is the same as the background image 
 	public void settings() {
+		music = new MusicHandler(this);
 		  fullScreen();		
 	}
 	
@@ -58,7 +60,7 @@ public class Moorhuhn extends PApplet{
 	public void setup() {
 		   frameRate(60);
 		   me = this;
-		   Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndTheme.wav"));
+		   music.playSound("sndTheme");
 	}
 
 		public void draw() {
@@ -73,5 +75,4 @@ public class Moorhuhn extends PApplet{
 		public void mousePressed(){
 			getMyGameController().gotShot();
 		}
-	
 }

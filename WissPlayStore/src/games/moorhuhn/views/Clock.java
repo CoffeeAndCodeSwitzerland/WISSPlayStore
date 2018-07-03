@@ -21,9 +21,13 @@ public class Clock
   //end variable declaration
 	PApplet parent;
 	String clock = "Time: "+tenMinutes+minutes+":"+tenSeconds+seconds;
-	public Clock(PApplet p) //Constructor
+	
+	Moorhuhn moorhuhn;
+	
+	public Clock(PApplet p, Moorhuhn moorHuhn) //Constructor
 	{
 		parent = p;
+		moorhuhn = moorHuhn;
 	}
 	
 	/**
@@ -53,7 +57,7 @@ public class Clock
 	   
 	  
 	    //Verhindert dass im Menu die Uhr weiterläuft
-		if (Moorhuhn.getMyGameController().myMenu.inMenu == false)
+		if (moorhuhn.getMyGameController().myMenu.inMenu == false)
 		{
 			clock = "Time: "+tenMinutes+minutes+":"+tenSeconds+seconds;
 			parent.fill(red,green,blue);

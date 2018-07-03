@@ -38,8 +38,11 @@ public class Menu {
 	
 	Sound mySound = new Sound();
 	
-	public Menu(PApplet p){ //Constructor
+	Moorhuhn moorhuhn;
+	
+	public Menu(PApplet p, Moorhuhn moorHuhn){ //Constructor
 		parent = p;
+		moorhuhn = moorHuhn;
 		xPos = parent.width/2;
 		yPos = parent.height/2;
 		imgMenuHuhn = Moorhuhn.getMyImage().imgMenuHuhn;
@@ -51,7 +54,7 @@ public class Menu {
 	    //Targets / füllt die ArrayList mit Löcher
 	    for(int i = 0; i <= 8; i++)
 	    {
-	      targets.add(new Target(parent,parent.width-i*30,parent.height-100));//targets.add(new Target(parent,(parent.width/2)-i*30,parent.height/2));
+	      targets.add(new Target(parent,parent.width-i*30,parent.height-100, moorhuhn));//targets.add(new Target(parent,(parent.width/2)-i*30,parent.height/2));
 	    }
 	}
 	
@@ -61,7 +64,7 @@ public class Menu {
 	  {
 	    
 	    //Prüft ob die Zeit abgelaufen ist
-	    if (Moorhuhn.getMyGameController().myClock.minutes < 0 && Moorhuhn.getMyGameController().myClock.tenSeconds > 0 && Moorhuhn.getMyGameController().myClock.seconds > 0)
+	    if (moorhuhn.getMyGameController().myClock.minutes < 0 && moorhuhn.getMyGameController().myClock.tenSeconds > 0 && moorhuhn.getMyGameController().myClock.seconds > 0)
 	    {
 	    	parent.textSize(100); //Bestimmt die Textgrösse
 	    	parent.text("Time Over", parent.width/2, parent.height/2); //Gibt dem Spieler zu deuten dass die Zeit vorbei ist
@@ -106,13 +109,13 @@ public class Menu {
 	    public void end()
 	    {
 	      clearObjects(); //Leert die ArrayList's damit im Menu keine Hühner usw. herumfliegen
-	      Moorhuhn.getMyGameController().myPlane.readyToFly = false; //Stellt sicher das im Menu kein Flieger durch fliget
-	      Moorhuhn.getMyGameController().myPlane.myBanner.readyToFly = false;
-	      GameController.background = Moorhuhn.getMyImage().imgMenuBackground;
-	      //Moorhuhn.getMyImage().flowerPower = Moorhuhn.getMyImage().imgMenuBackground; //Ändert das Hintergrundbild
-	      Moorhuhn.getMyImage().imgScope = Moorhuhn.getMyImage().imgScopeBlack; //Nimmt wieder das normale Scope
-	      Moorhuhn.getMyGameController().myZepelin.readyToFly = false; //Definiert dass der Zepelin nicht mehr Fliegen kann
-	      Moorhuhn.getMyGameController().myClock.clock = ""; //Blendet die Uhr aus
+	      moorhuhn.getMyGameController().myPlane.readyToFly = false; //Stellt sicher das im Menu kein Flieger durch fliget
+	      moorhuhn.getMyGameController().myPlane.myBanner.readyToFly = false;
+	      GameController.background = moorhuhn.getMyImage().imgMenuBackground;
+	      //moorhuhn.getMyImage().flowerPower = moorhuhn.getMyImage().imgMenuBackground; //Ändert das Hintergrundbild
+	      moorhuhn.getMyImage().imgScope = moorhuhn.getMyImage().imgScopeBlack; //Nimmt wieder das normale Scope
+	      moorhuhn.getMyGameController().myZepelin.readyToFly = false; //Definiert dass der Zepelin nicht mehr Fliegen kann
+	      moorhuhn.getMyGameController().myClock.clock = ""; //Blendet die Uhr aus
 	    }
 	  	    
 	  /**
@@ -121,31 +124,31 @@ public class Menu {
 	  public void restart()
 	    {
 	      clearObjects(); //Stellt sicher dass die ArrayList's leer sind
-	      Moorhuhn.getMyGameController().createObjects(); //Füllt die ArrayList's wieder mit Objekten(Hühner, Schüsse)
-	      Moorhuhn.getMyGameController().myScore.score = 0; //Stellt den Score auf 0
-	      GameController.background = Moorhuhn.getMyImage().flowerPower; //Fügt als Hintergrundbild wieder das Feld ein
-	      Moorhuhn.getMyGameController().myZepelin.readyToFly = true; //Definiert dass der Zepelin wieder Fliegen kann
-	      Moorhuhn.getMyGameController().myZepelin.resetZepelin(); //Setzt den Zepelin zurück so dass er für eine neue Runde bereit ist
-	      Moorhuhn.getMyGameController().myPlane.readyToFly = true; //Definiert dass der Flieger wieder Fliegen kann
-	      Moorhuhn.getMyGameController().myPlane.myBanner.readyToFly = true;
-	      Moorhuhn.getMyGameController().myPlane.counter = 0; //Setzt den Counter auf NULL damit der Flieger nicht am anfang durchfliegen kann
-	      Moorhuhn.getMyGameController().myClock.tenSeconds = 6; //Setzt Sekunden zurück
-	      Moorhuhn.getMyGameController().myClock.seconds = 0;
-	      Moorhuhn.getMyGameController().myClock.minutes = 1; //Setzt den Counter von der Clock zurück
-		  Moorhuhn.getMyGameController().myClock.red = 255; //Setzt die Schriftfarbe auf Weiss
-		  Moorhuhn.getMyGameController().myClock.green = 255; //Setzt die Schriftfarbe auf Weiss
-		  Moorhuhn.getMyGameController().myClock.blue = 255; //Setzt die Schriftfarbe auf Weiss
-		  Moorhuhn.getMyGameController().myScore.red = 255; //Setzt die Schriftfarbe auf Weiss
-		  Moorhuhn.getMyGameController().myScore.green = 255; //Setzt die Schriftfarbe auf Weiss
-		  Moorhuhn.getMyGameController().myScore.blue = 255; //Setzt die Schriftfarbe auf Weiss
-		  Moorhuhn.getMyGameController().myPlayer.noAmo = false;
-		  Moorhuhn.getMyGameController().myPlayer.shotGun.scopeBlack();
+	      moorhuhn.getMyGameController().createObjects(); //Füllt die ArrayList's wieder mit Objekten(Hühner, Schüsse)
+	      moorhuhn.getMyGameController().myScore.score = 0; //Stellt den Score auf 0
+	      GameController.background = moorhuhn.getMyImage().flowerPower; //Fügt als Hintergrundbild wieder das Feld ein
+	      moorhuhn.getMyGameController().myZepelin.readyToFly = true; //Definiert dass der Zepelin wieder Fliegen kann
+	      moorhuhn.getMyGameController().myZepelin.resetZepelin(); //Setzt den Zepelin zurück so dass er für eine neue Runde bereit ist
+	      moorhuhn.getMyGameController().myPlane.readyToFly = true; //Definiert dass der Flieger wieder Fliegen kann
+	      moorhuhn.getMyGameController().myPlane.myBanner.readyToFly = true;
+	      moorhuhn.getMyGameController().myPlane.counter = 0; //Setzt den Counter auf NULL damit der Flieger nicht am anfang durchfliegen kann
+	      moorhuhn.getMyGameController().myClock.tenSeconds = 6; //Setzt Sekunden zurück
+	      moorhuhn.getMyGameController().myClock.seconds = 0;
+	      moorhuhn.getMyGameController().myClock.minutes = 1; //Setzt den Counter von der Clock zurück
+		  moorhuhn.getMyGameController().myClock.red = 255; //Setzt die Schriftfarbe auf Weiss
+		  moorhuhn.getMyGameController().myClock.green = 255; //Setzt die Schriftfarbe auf Weiss
+		  moorhuhn.getMyGameController().myClock.blue = 255; //Setzt die Schriftfarbe auf Weiss
+		  moorhuhn.getMyGameController().myScore.red = 255; //Setzt die Schriftfarbe auf Weiss
+		  moorhuhn.getMyGameController().myScore.green = 255; //Setzt die Schriftfarbe auf Weiss
+		  moorhuhn.getMyGameController().myScore.blue = 255; //Setzt die Schriftfarbe auf Weiss
+		  moorhuhn.getMyGameController().myPlayer.noAmo = false;
+		  moorhuhn.getMyGameController().myPlayer.shotGun.scopeBlack();
 	      counter = 0; //Setzt Counter zurück
 	      inMenu = false;
 	      i = 0;
 		  holeCounter = 0;
 		  targets.clear();
-		  Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndTheme.wav"));
+		  moorhuhn.music.playSound("sndTheme");
 	    }
 	   	
 	  
@@ -154,7 +157,7 @@ public class Menu {
 	     */
 	    public void clearObjects()
 	    {
-	    	Moorhuhn.getMyGameController().Shots.clear();
-	    	Moorhuhn.getMyGameController().chickens.clear();
+	    	moorhuhn.getMyGameController().Shots.clear();
+	    	moorhuhn.getMyGameController().chickens.clear();
 	    }
 }

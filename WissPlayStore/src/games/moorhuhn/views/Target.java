@@ -16,8 +16,11 @@ public class Target {
 	int myHeight = 25;
 	int state = 0;
 	
-	public Target(PApplet p, int newXPos, int newYPos) {
+	Moorhuhn moorhuhn;
+	
+	public Target(PApplet p, int newXPos, int newYPos, Moorhuhn moorHuhn) {
 		  parent = p;
+		  moorhuhn = moorHuhn;
 		  newXPos = (int)parent.random(200)+parent.width/4-100;
 		  newYPos = (int)parent.random(200)+parent.height/2-100;
 		  xPos = newXPos;
@@ -32,7 +35,7 @@ public class Target {
 			 parent.image(Moorhuhn.getMyImage().imgHole, xPos, yPos); 
 			 sound();
 		 }
-		 if (Moorhuhn.getMyGameController().myMenu.inMenu == false)
+		 if (moorhuhn.getMyGameController().myMenu.inMenu == false)
 		 {
 			 state = 0;
 		 }
@@ -42,7 +45,7 @@ public class Target {
 	 {
 		 if(state <= 1)
 		 {
-			 Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndShotgun.wav"));
+			 moorhuhn.music.playSound("sndShotgun");
 		 }
 	 }
 }

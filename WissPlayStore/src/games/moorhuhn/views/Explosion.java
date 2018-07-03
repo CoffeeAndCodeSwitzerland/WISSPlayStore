@@ -5,6 +5,7 @@ import java.io.File;
 import games.moorhuhn.basics.Environment;
 import games.moorhuhn.basics.Sound;
 import games.moorhuhn.controllers.Moorhuhn;
+import games.moorhuhn.controllers.MusicHandler;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -14,7 +15,7 @@ import processing.core.PImage;
  * @author Patrick Bauersfeld
  *
  */
-public class Explosion {
+public class Explosion{
 	
 	  PApplet parent;
 	  public int xPos = 0;
@@ -23,19 +24,21 @@ public class Explosion {
 	  public int myHeight = 632;
 	  int sndCounter = 0;
 	  PImage gifExplosion;
-	
-	public Explosion(PApplet p){
+	  MusicHandler music;
+	  
+	public Explosion(PApplet p, MusicHandler musicHandler){
 		parent = p;
+		music = musicHandler;
 		gifExplosion = Moorhuhn.getMyImage().gifExplosion;
 	}
-	
+
 	  
 	  public void myDraw()
 	  {
 		sndCounter++;
 	    parent.image(gifExplosion, xPos, yPos, myWidth, myHeight); 
 	    if(sndCounter == 1) {
-	    	Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndExplosion.wav"));  	
+	    	music.playSound("sndExplosion");  	
 	    }
 	    	    else if(sndCounter > 10)
 	    {

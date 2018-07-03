@@ -21,9 +21,12 @@ public class Player {
 	public Gun shotGun;
 	public boolean noAmo = false;
 	
-	public Player(PApplet p){
+	Moorhuhn moorhuhn;
+	
+	public Player(PApplet p, Moorhuhn moorHuhn){
 		parent = p;
-		shotGun = new Gun(parent);
+		moorhuhn = moorHuhn;
+		shotGun = new Gun(parent, moorhuhn);
 	}	  
 	  
 	    public void gotShot()
@@ -34,18 +37,18 @@ public class Player {
 	    		Moorhuhn.getMyGameController().myMenu.restart();
 	    	}*/
 	      //Prüft ob der Spieler noch Schüsse hat
-	      if (Moorhuhn.getMyGameController().Shots.size() > 0)
+	      if (moorhuhn.getMyGameController().Shots.size() > 0)
 	      {
 	        shotGun.gunSettings();
-	        Moorhuhn.getMyGameController().Shots.remove(Moorhuhn.getMyGameController().Shots.size() - 1); //Zieht dem Spieler ein Schuss ab
+	        moorhuhn.getMyGameController().Shots.remove(moorhuhn.getMyGameController().Shots.size() - 1); //Zieht dem Spieler ein Schuss ab
 	        //Sound Shotgun
-	        Sound.playSound(new File("\\bin\\games\\moorhuhn\\sounds\\sndShotgun.wav"));
+	        moorhuhn.music.playSound("sndShotgun");
 	        shotHuhn();	//Prüft ob ein Huhn oder ein Flieger getroffen wurde
-	        Moorhuhn.getMyGameController().myPlane.shotPlane(); //Prüft ob der Flieger getroffen wird
-	        Moorhuhn.getMyGameController().myPlane.myBanner.isBannerShot(); //Prüft ob der Banner getroffen wird
-	        Moorhuhn.getMyGameController().myZepelin.shotZepelin(); //Prüft ob der Zepelin getroffen wird
+	        moorhuhn.getMyGameController().myPlane.shotPlane(); //Prüft ob der Flieger getroffen wird
+	        moorhuhn.getMyGameController().myPlane.myBanner.isBannerShot(); //Prüft ob der Banner getroffen wird
+	        moorhuhn.getMyGameController().myZepelin.shotZepelin(); //Prüft ob der Zepelin getroffen wird
 	        shotGun.scopeBlack(); //Prüft welches Scope verwendet werden muss
-	        if (Moorhuhn.getMyGameController().Shots.size() == 0)
+	        if (moorhuhn.getMyGameController().Shots.size() == 0)
 	        {
 	            //Wechselt die Scope Farbe
 	            shotGun.scopeRed();
@@ -59,12 +62,12 @@ public class Player {
 	          {
 	            reload();
 	            noAmo = false;
-	            Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndReload.wav"));
+	            moorhuhn.music.playSound("sndReload");
 	          }
 	          else
 	          {
 	        	  doReload();
-	        	  Sound.playSound(new File(Environment.getActualPath()+"\\bin\\games\\moorhuhn\\sounds\\sndEmptyGun.wav"));
+	        	  moorhuhn.music.playSound("sndEmptyGun");
 	          }
 	      }
 	    }
@@ -82,14 +85,14 @@ public class Player {
 	    
 	    public void reload()
 	    {
-	    	  if (Moorhuhn.getMyGameController().myMenu.inMenu == false)
+	    	  if (moorhuhn.getMyGameController().myMenu.inMenu == false)
 	    	  {
 			      //Wechselt die Scope Farbe
 			      shotGun.scopeBlack();
 			      //Gibt dem Spieler 8 Schüsse
 			      for(int i = 1; i <= 8; i++)
 			       {
-			    	  Moorhuhn.getMyGameController().Shots.add(new Shot(parent,parent.width-i*30,parent.height-100));
+			    	  moorhuhn.getMyGameController().Shots.add(new Shot(parent,parent.width-i*30,parent.height-100));
 			       }
 	    	  }
 	    }
@@ -100,7 +103,7 @@ public class Player {
 	    {
 	      switch(parent.key) 
 	      {
-	        case 32: Moorhuhn.getMyGameController().myMenu.restart(); //32 entspricht Leertaste
+	        case 32: moorhuhn.getMyGameController().myMenu.restart(); //32 entspricht Leertaste
 	      }
 	    }
 	    
@@ -109,7 +112,7 @@ public class Player {
 	     */
 	    void shotHuhn()
 	    {
-	       for (Huhn h : Moorhuhn.getMyGameController().chickens) 
+	       for (Huhn h : moorhuhn.getMyGameController().chickens) 
 	        {    
 	    	   h.shotHuhn();
 	        }
@@ -117,6 +120,6 @@ public class Player {
 	    
 	  public void showHitmarker()
 	  {
-		  Moorhuhn.getMyGameController().myHitmarker.useHitmarker = 1;
+		  moorhuhn.getMyGameController().myHitmarker.useHitmarker = 1;
 	  }
 }

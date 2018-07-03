@@ -14,11 +14,12 @@ public class Huhn extends Shape{
 	  int scale = 0;
 	  int swingCounter = 1;
 	  boolean invertDirection;
+	  Moorhuhn moorhuhn;
 	  
-	  
-	  public Huhn (PApplet p) //Constructor
+	  public Huhn (PApplet p, Moorhuhn moorHuhn) //Constructor
 	  {
 		  super (p);
+		  moorhuhn = moorHuhn;
 		  setPosition(); 
 	  }
 	  
@@ -92,10 +93,10 @@ public class Huhn extends Shape{
 		          switch (swingCounter) 
 		            {
 		              case 1:
-		                imgShape = Moorhuhn.getMyImage().imgHuhn1;
+		                imgShape = moorhuhn.getMyImage().imgHuhn1;
 		              break;
 		              case 15:   
-		                imgShape = Moorhuhn.getMyImage().imgHuhn2;
+		                imgShape = moorhuhn.getMyImage().imgHuhn2;
 		              break;
 		            }
 		          }
@@ -105,10 +106,10 @@ public class Huhn extends Shape{
 		             switch (swingCounter) 
 		               {
 		                  case 1:
-		                    imgShape = Moorhuhn.getMyImage().imgHuhn1g;
+		                    imgShape = moorhuhn.getMyImage().imgHuhn1g;
 		                  break;
 		                  case 15:   
-		                    imgShape = Moorhuhn.getMyImage().imgHuhn2g;
+		                    imgShape = moorhuhn.getMyImage().imgHuhn2g;
 		                  break;
 		              }
 		            }
@@ -160,7 +161,7 @@ public class Huhn extends Shape{
 	    
 	    void killHuhn()
 	      {
-	      imgShape = Moorhuhn.getMyImage().imgDeadHuhn;
+	      imgShape = moorhuhn.getMyImage().imgDeadHuhn;
 	      xSpeed = 0;
 	      ySpeed = 20;
 	      }
@@ -177,14 +178,14 @@ public class Huhn extends Shape{
 	          hypothenuse *= 1.25; //Falls die Hitbox zu klein wäre, einfach diese Zeile entfernen!!!!
 	          
 	          //Treffer
-	          if(hypothenuse < (myWidth/2)+Moorhuhn.getMyGameController().myPlayer.shotGun.spray)
+	          if(hypothenuse < (myWidth/2)+moorhuhn.getMyGameController().myPlayer.shotGun.spray)
 	              {
 	               isShapeDead = 1;
-	               Moorhuhn.getMyGameController().myScore.score += 35-(scale/5);
+	               moorhuhn.getMyGameController().myScore.score += 35-(scale/5);
 	               showShapePoints(0, 255, 0, (35-(scale/5)));   
-	               Moorhuhn.getMyGameController().myPlayer.showHitmarker();
+	               moorhuhn.getMyGameController().myPlayer.showHitmarker();
 	               //HuhnDead-Sound
-	               //Sound.playSound(new File("\bin\games\moorhuhn\sounds\sndHuhnDead.wav"));
+	               moorhuhn.music.playSound("sndHuhnDead");
 	              }
 	        }
 	    
