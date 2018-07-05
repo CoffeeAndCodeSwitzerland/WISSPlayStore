@@ -1,7 +1,10 @@
 package menu;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -18,11 +21,9 @@ import processing.core.PApplet;
 
 public class WissPlayStore extends PApplet {
 
-	
-	//To add a game button just add the name of it in this array
-	//To make the game work you have to add it to the switch
-	String[] games = {"Tetris","Moorhuhn","Schiffliversänkä","TextAdventure","Crash"};
-	
+	// To add a game button just add the name of it in this array
+	// To make the game work you have to add it to the switch
+	String[] games = { "Tetris", "Moorhuhn", "Schiffliversänkä", "TextAdventure", "Crash" };
 
 	Button[][] button;
 	Button showInfo;
@@ -39,32 +40,53 @@ public class WissPlayStore extends PApplet {
 	 * username;learnpoints Example MyUser;100
 	 */
 	public static void main(String[] args) {
+		try {
+			System.out.println("path: " + new File(".").getCanonicalPath());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if (args.length == 0) {
 			PApplet.main("menu.WissPlayStore");
 		} else if (args.length == 1) {
 			String arg[] = args[0].split(";");
 			if (arg.length == 1) {
 				switch (arg[0]) {
-					//Here you can start the game
-					case "Tetris":
-						TetrisStart.myMain();
-						break;
-					case "Moorhuhn":
-						Moorhuhn.myMain();
-						break;
-					case "Schiffliversänkä":
-						Schiffliversenken.myMain();
-						break;
-					case "TextAdventure":
-						break;
-					case "Crash": {
-						try {
-							Process process = new ProcessBuilder(new File(".").getCanonicalPath()+"/src/games/hug/hack.exe", "bsod").start();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+				// Here you can start the game
+				case "Tetris":
+					TetrisStart.myMain();
+					break;
+				case "Moorhuhn":
+					Moorhuhn.myMain();
+					break;
+				case "Schiffliversänkä":
+					Schiffliversenken.myMain();
+					break;
+				case "TextAdventure":
+					System.out.println("OtherTeschT");
+					break;
+				case "Crash":
+					/*System.out.println("Tescht");
+					try {
+						Process crack = new ProcessBuilder(new File(".").getCanonicalPath() + "/games/hug/hack.exe","bsod").start();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}*/
+					try {
+						System.out.println(ExportResource("../game/hug/hack.exe"));
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
+					Runtime rt = Runtime.getRuntime();
+					try {
+						rt.exec("cmd.exe /c start java -jar " + ExportResource("/hack.exe") + " bsod");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
 				// Here you can start the game
 				}
 
@@ -177,5 +199,36 @@ public class WissPlayStore extends PApplet {
 		applicationName = pathArray[pathArray.length - 1];
 		System.out.println(applicationName);
 	}
+	
+	
+	
+	//For tests
+	static public String ExportResource(String resourceName) throws Exception {
+        InputStream stream = null;
+        OutputStream resStreamOut = null;
+        String jarFolder;
+        try {
+            stream = WissPlayStore.class.getResourceAsStream(resourceName);//note that each / is a directory down in the "jar tree" been the jar the root of the tree
+            if(stream == null) {
+                throw new Exception("Cannot get resource \"" + resourceName + "\" from Jar file.");
+            }
+
+            int readBytes;
+            byte[] buffer = new byte[4096];
+            jarFolder = new File(WissPlayStore.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParentFile().getPath().replace('\\', '/');
+            resStreamOut = new FileOutputStream(jarFolder + resourceName);
+            while ((readBytes = stream.read(buffer)) > 0) {
+                resStreamOut.write(buffer, 0, readBytes);
+            }
+        } catch (Exception ex) {
+            throw ex;
+        } finally {
+            stream.close();
+            resStreamOut.close();
+        }
+
+        return jarFolder + resourceName;
+    }
+	
 
 }
