@@ -93,10 +93,10 @@ public class Huhn extends Shape{
 		          switch (swingCounter) 
 		            {
 		              case 1:
-		                imgShape = moorhuhn.getMyImage().imgHuhn1;
+		                imgShape = Moorhuhn.getMyImage().imgHuhn1;
 		              break;
 		              case 15:   
-		                imgShape = moorhuhn.getMyImage().imgHuhn2;
+		                imgShape = Moorhuhn.getMyImage().imgHuhn2;
 		              break;
 		            }
 		          }
@@ -106,10 +106,10 @@ public class Huhn extends Shape{
 		             switch (swingCounter) 
 		               {
 		                  case 1:
-		                    imgShape = moorhuhn.getMyImage().imgHuhn1g;
+		                    imgShape = Moorhuhn.getMyImage().imgHuhn1g;
 		                  break;
 		                  case 15:   
-		                    imgShape = moorhuhn.getMyImage().imgHuhn2g;
+		                    imgShape = Moorhuhn.getMyImage().imgHuhn2g;
 		                  break;
 		              }
 		            }
@@ -161,7 +161,7 @@ public class Huhn extends Shape{
 	    
 	    void killHuhn()
 	      {
-	      imgShape = moorhuhn.getMyImage().imgDeadHuhn;
+	      imgShape = Moorhuhn.getMyImage().imgDeadHuhn;
 	      xSpeed = 0;
 	      ySpeed = 20;
 	      }

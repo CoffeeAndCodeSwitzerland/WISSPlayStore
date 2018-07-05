@@ -31,13 +31,13 @@ public class Gun {
 	    {
 	      if (moorhuhn.getMyGameController().myScore.score < pointsShotGun)
 	        {
-	    	  moorhuhn.getMyImage().imgScope = moorhuhn.getMyImage().imgScopeBlack;
+	    	  Moorhuhn.getMyImage().imgScope = Moorhuhn.getMyImage().imgScopeBlack;
 	        }
 	      else
 	        {
 	          if (moorhuhn.getMyGameController().myScore.score >= pointsShotGun)
 	            {
-	        	  moorhuhn.getMyImage().imgScope = moorhuhn.getMyImage().imgWideScopeBlack;
+	        	  Moorhuhn.getMyImage().imgScope = Moorhuhn.getMyImage().imgWideScopeBlack;
 	            }
 	        }
 	    }
@@ -49,13 +49,13 @@ public class Gun {
 	    {
 	      if (moorhuhn.getMyGameController().myScore.score < pointsShotGun)
 	        {
-	    	  moorhuhn.getMyImage().imgScope = moorhuhn.getMyImage().imgScopeRed;
+	    	  Moorhuhn.getMyImage().imgScope = Moorhuhn.getMyImage().imgScopeRed;
 	        }
 	      else
 	        {
 	          if (moorhuhn.getMyGameController().myScore.score >= pointsShotGun)
 	            {
-	        	  moorhuhn.getMyImage().imgScope = moorhuhn.getMyImage().imgWideScopeRed;
+	        	  Moorhuhn.getMyImage().imgScope = Moorhuhn.getMyImage().imgWideScopeRed;
 	            }
 	        }
 	    }
@@ -95,8 +95,8 @@ public class Gun {
 			     
 			     switch (stateGun)
 			     {
-			       case 1: parent.image(moorhuhn.getMyImage().imgShotgun, (parent.width/2)-(myWidth/2), 10, myWidth, myHeight); break;
-			       case 2: parent.image(moorhuhn.getMyImage().imgSawedShotgun, (parent.width/2)-(myWidth/2), 10, myWidth, myHeight); break;
+			       case 1: parent.image(Moorhuhn.getMyImage().imgShotgun, (parent.width/2)-(myWidth/2), 10, myWidth, myHeight); break;
+			       case 2: parent.image(Moorhuhn.getMyImage().imgSawedShotgun, (parent.width/2)-(myWidth/2), 10, myWidth, myHeight); break;
 			     }
 		  }
 	  }

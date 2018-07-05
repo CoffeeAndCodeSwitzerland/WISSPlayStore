@@ -1,10 +1,8 @@
 package games.moorhuhn.views;
 
-import java.io.File;
 //import java.io.File;
 import java.util.ArrayList;
 
-import games.moorhuhn.basics.Environment;
 import games.moorhuhn.basics.Sound;
 import games.moorhuhn.controllers.GameController;
 import games.moorhuhn.controllers.Moorhuhn;
@@ -111,9 +109,9 @@ public class Menu {
 	      clearObjects(); //Leert die ArrayList's damit im Menu keine Hühner usw. herumfliegen
 	      moorhuhn.getMyGameController().myPlane.readyToFly = false; //Stellt sicher das im Menu kein Flieger durch fliget
 	      moorhuhn.getMyGameController().myPlane.myBanner.readyToFly = false;
-	      GameController.background = moorhuhn.getMyImage().imgMenuBackground;
+	      GameController.background = Moorhuhn.getMyImage().imgMenuBackground;
 	      //moorhuhn.getMyImage().flowerPower = moorhuhn.getMyImage().imgMenuBackground; //Ändert das Hintergrundbild
-	      moorhuhn.getMyImage().imgScope = moorhuhn.getMyImage().imgScopeBlack; //Nimmt wieder das normale Scope
+	      Moorhuhn.getMyImage().imgScope = Moorhuhn.getMyImage().imgScopeBlack; //Nimmt wieder das normale Scope
 	      moorhuhn.getMyGameController().myZepelin.readyToFly = false; //Definiert dass der Zepelin nicht mehr Fliegen kann
 	      moorhuhn.getMyGameController().myClock.clock = ""; //Blendet die Uhr aus
 	    }
@@ -126,7 +124,7 @@ public class Menu {
 	      clearObjects(); //Stellt sicher dass die ArrayList's leer sind
 	      moorhuhn.getMyGameController().createObjects(); //Füllt die ArrayList's wieder mit Objekten(Hühner, Schüsse)
 	      moorhuhn.getMyGameController().myScore.score = 0; //Stellt den Score auf 0
-	      GameController.background = moorhuhn.getMyImage().flowerPower; //Fügt als Hintergrundbild wieder das Feld ein
+	      GameController.background = Moorhuhn.getMyImage().flowerPower; //Fügt als Hintergrundbild wieder das Feld ein
 	      moorhuhn.getMyGameController().myZepelin.readyToFly = true; //Definiert dass der Zepelin wieder Fliegen kann
 	      moorhuhn.getMyGameController().myZepelin.resetZepelin(); //Setzt den Zepelin zurück so dass er für eine neue Runde bereit ist
 	      moorhuhn.getMyGameController().myPlane.readyToFly = true; //Definiert dass der Flieger wieder Fliegen kann

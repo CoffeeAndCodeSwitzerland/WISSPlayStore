@@ -18,8 +18,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Sound {
 	String soundPath = "games/moorhuhn/sounds/";
 	
-    private static boolean tryToInterruptSound = false;
-    private static long mainTimeOut = 3000;
     private static long startTime = System.currentTimeMillis();
 
     public static synchronized Thread playSound(final File file) {

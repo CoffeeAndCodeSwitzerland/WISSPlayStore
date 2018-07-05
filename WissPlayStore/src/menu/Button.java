@@ -1,6 +1,7 @@
 package menu;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 /**
  * 
@@ -27,7 +28,7 @@ public class Button extends GUI {
 		p.rect(xPos, yPos, myWidth, myHeight, myWidth / 4);
 		p.fill(textColor);
 		p.textSize(textSize);
-		p.textAlign(p.CENTER);
+		p.textAlign(PConstants.CENTER);
 		p.text(text, xPos + myWidth / 2, yPos + myHeight / 2);
 	}
 

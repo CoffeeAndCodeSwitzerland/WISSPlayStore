@@ -1,11 +1,8 @@
 package games.moorhuhn.controllers;
 
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
 import games.moorhuhn.basics.Image;
 import games.moorhuhn.basics.Sound;
 import processing.core.PApplet;
-import games.moorhuhn.controllers.MusicHandler;
 
 /**
  * This is the mainclass. This class starts the game.

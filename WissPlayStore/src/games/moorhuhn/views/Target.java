@@ -1,9 +1,5 @@
 package games.moorhuhn.views;
 
-import java.io.File;
-
-import games.moorhuhn.basics.Environment;
-import games.moorhuhn.basics.Sound;
 import games.moorhuhn.controllers.Moorhuhn;
 import processing.core.PApplet;
 
