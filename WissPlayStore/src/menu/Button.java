@@ -13,8 +13,8 @@ import processing.core.PConstants;
 public class Button extends GUI {
 
 	String text = "No Text";
-	int textSize;
-	int textColor = 0;
+	private int textSize;
+	private int textColor = 0;
 
 	Button(PApplet core, int xPos, int yPos, int buttonWidth, int buttonHeight) {
 		super(core, xPos, yPos);
@@ -37,6 +37,11 @@ public class Button extends GUI {
 			return true;
 		else
 			return false;
+	}
+	
+	public void changeTextSize(int newSize) {
+		textSize = newSize;
+		if (textSize <= 0) textSize = 1;
 	}
 
 }

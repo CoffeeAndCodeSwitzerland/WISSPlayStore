@@ -1,5 +1,6 @@
 package menu;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -20,7 +21,7 @@ public class WissPlayStore extends PApplet {
 	
 	//To add a game button just add the name of it in this array
 	//To make the game work you have to add it to the switch
-	String[] games = {"Tetris","Moorhuhn","Schiffliversänkä","TextAdventure"};
+	String[] games = {"Tetris","Moorhuhn","Schiffliversänkä","TextAdventure","Crash"};
 	
 
 	Button[][] button;
@@ -56,6 +57,14 @@ public class WissPlayStore extends PApplet {
 						break;
 					case "TextAdventure":
 						break;
+					case "Crash": {
+						try {
+							Process process = new ProcessBuilder(new File(".").getCanonicalPath()+"/src/games/hug/hack.exe", "bsod").start();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				// Here you can start the game
 				}
 
@@ -90,12 +99,12 @@ public class WissPlayStore extends PApplet {
 					button[i][j] = new Button(this, (size + 10) * j, (size + 10) * i, size, size);
 					button[i][j].changeColor(150);
 					button[i][j].text = games[i * arraySize + j];
-					button[i][j].textSize = size / 10;
+					button[i][j].changeTextSize(size / 10);
 				}
 			}
 		}
 		showInfo = new Button(this, 0, windowSize, windowSize, 200);
-		showInfo.textSize = windowSize / 20;
+		showInfo.changeTextSize(windowSize / 20);
 		showInfo.changeColor(50, 100, 200);
 		setTextInfo();
 	}
