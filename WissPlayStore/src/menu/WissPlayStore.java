@@ -20,7 +20,7 @@ public class WissPlayStore extends PApplet {
 	
 	//To add a game button just add the name of it in this array
 	//To make the game work you have to add it to the switch
-	String[] games = {"Tetris","Moorhuhn","Schiffliversänkä","TextAdventure N/A"};
+	String[] games = {"Tetris","Moorhuhn","Schiffliversänkä","TextAdventure"};
 	
 	Button[][] button;
 	Button showInfo;
@@ -54,7 +54,7 @@ public class WissPlayStore extends PApplet {
 					case "Schiffliversänkä":
 						Schiffliversenken.myMain();
 						break;
-					case "SUVSE":
+					case "TextAdventure":
 						break;
 				}
 			} else if (arg.length == 2) {
