@@ -40,6 +40,7 @@ public class MusicHandler {
 		}
 
 	}
+	
 	//plays the song, matching the given index. if the index doesn't exist, skip to a random song
 	public void play(int index){
 		if (index > songs || index < 0){
