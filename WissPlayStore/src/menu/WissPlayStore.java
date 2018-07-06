@@ -8,6 +8,7 @@ import java.net.URLDecoder;
 import games.moorhuhn.controllers.Moorhuhn;
 import games.schiffliversaenken.schiffeversenken.Schiffliversenken;
 import games.tetris.controls.TetrisStart;
+import games.suvse.game.SkyrimUltraVerySpecialEdition;
 import processing.core.PApplet;
 
 /**
@@ -60,7 +61,7 @@ public class WissPlayStore extends PApplet {
 					Schiffliversenken.myMain();
 					break;
 				case "TextAdventure":
-					System.out.println("OtherTeschT");
+					new SkyrimUltraVerySpecialEdition().main();;
 					break;
 				// Here you can start the game
 				}
