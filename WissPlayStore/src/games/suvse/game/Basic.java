@@ -96,6 +96,7 @@ public abstract class Basic {
 	// Filehandling ---------------------------------------
 
 	// Gives back the string of an inputstream
+	@SuppressWarnings("resource")
 	public String getStringFromStream(InputStream is) {
 		return new Scanner(is).useDelimiter("[^n\r]\n+").next();
 	}

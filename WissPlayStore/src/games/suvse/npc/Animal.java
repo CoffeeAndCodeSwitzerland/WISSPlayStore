@@ -30,6 +30,7 @@ public abstract class Animal {
 	public int unarmedDamage;
 
 	// Updates the level of the animal
+	@SuppressWarnings("unused")
 	private void updateLevel(int min, int max, int playerLevel) {
 		level = playerLevel;
 		if (level < min) {
