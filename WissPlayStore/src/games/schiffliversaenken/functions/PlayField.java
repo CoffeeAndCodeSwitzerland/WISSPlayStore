@@ -256,4 +256,17 @@ public class PlayField {
 		}
 		anzahlVersunkeneSchiffli ++;
 	}
+	
+	int getState(int column, int row) {
+		return getFeld(column, row).getZustand();
+	}
+	void getHited(int column, int row) {
+		felderArray[column][row].setZustand(5);
+	}
+	int getDestroyed(int column, int row) {
+		return felderArray[column][row].myShipID;
+	}
+	void getID(int column, int row, int id) {
+		felderArray[column][row].myShipID = id;
+	}
 }
